@@ -73,15 +73,16 @@ async def start(message: types.Message):
 
     if(len(records)):
         answer = f"🕘 История операций за {within_als[within][-1]}\n\n"
-
+        sumadd = 0
+        sumspent = 0
         for r in records:
             answer += "<b>" + ("➖ Расход" if not r[2] else "➕ Доход") + "</b>"
             answer += f" - {r[3]}"
             answer += f" <i>({r[4]})</i>\n"
-        if not r[2]:
-            sumspent += r[3]
-        else:
-            sumadd += r[3]
+            if not r[2]:
+                sumspent += r[3]
+            else:
+                sumadd += r[3]
         answer+=f'\nСумма доходов = {sumadd}\nСумма расходов = {sumspent}'
 
 
