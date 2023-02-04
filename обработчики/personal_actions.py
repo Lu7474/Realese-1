@@ -78,7 +78,11 @@ async def start(message: types.Message):
             answer += "<b>" + ("➖ Расход" if not r[2] else "➕ Доход") + "</b>"
             answer += f" - {r[3]}"
             answer += f" <i>({r[4]})</i>\n"
-        
+        if not r[2]:
+            sumspent += r[3]
+        else:
+            sumadd += r[3]
+        answer+=f'\nСумма доходов = {sumadd}\nСумма расходов = {sumspent}'
 
 
         await message.reply(answer)
